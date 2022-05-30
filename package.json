@@ -3,7 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon"
+    "build": "npm run clean && npm run copy:prod && npx tsc --build tsconfig.json",
+    "build:docker": "docker-compose build nodejsstarter",
+    "clean": "npx rimraf ./dist",
+    "clean:docker": "docker-compose rm -s -f nodejsstarter",
+    "copy:prod": "npm run copy:prod-config",
+    "copy:prod-config": "npx copyfiles ./src/configs/production.env ./dist/configs --flat",
+    "start": "nodemon",
+    "start:prod": "NODE_ENV='production' node -r module-alias/register ./dist",
+    "start:docker": "docker-compose run -p 3000:3000 nodejsstarter"
   },
   "nodemonConfig": {
     "watch": [
@@ -34,7 +42,7 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "http-status-codes": "^2.2.0",
-    "jade": "^0.31.2",
+    "jade": "^0.29.0",
     "jet-logger": "^1.1.5",
     "module-alias": "^2.2.2",
     "morgan": "~1.9.1"
@@ -46,7 +54,9 @@
     "@types/module-alias": "^2.0.1",
     "@types/morgan": "^1.9.3",
     "@types/node": "^17.0.36",
+    "copyfiles": "^2.4.1",
     "nodemon": "^2.0.16",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.8.0",
     "tsconfig-paths": "^4.0.0",
     "typescript": "^4.7.2"
