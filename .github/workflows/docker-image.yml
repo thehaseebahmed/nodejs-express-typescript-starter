@@ -21,7 +21,7 @@ jobs:
       run: npm run build:docker      
       
     - name: Tag the Docker image
-      run: docker tag nodejsstarter thehaseebahmed/nodejs-starter
+      run: docker tag nodejsstarter thehaseebahmed/nodejs-typescript-starter
       
     - name: Docker Login
       uses: docker/login-action@v2.0.0
@@ -30,4 +30,4 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push the Docker image
-      run: docker push thehaseebahmed/nodejs-starter
+      run: docker push thehaseebahmed/nodejs-typescript-starter
