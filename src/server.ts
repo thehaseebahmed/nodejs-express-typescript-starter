@@ -6,7 +6,7 @@ import httpLogger from "morgan";
 import logger from "jet-logger";
 import path from "path";
 
-import apiRouter from "./routes/api";
+import apiRouter from "@routes/api";
 
 const app = express();
 const sentryDefaultSampleRate = "1.0";
