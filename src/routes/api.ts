@@ -1,12 +1,14 @@
 import { Router } from 'express';
-import pingRouter from './ping-router';
+import healthRouter from './health-router';
+import todosRouter from './todos-router';
 
 
 // Init
 const apiRouter = Router();
 
 // Add api routes
-apiRouter.use('/ping', pingRouter);
+apiRouter.use('/health-check', healthRouter);
+apiRouter.use('/todos', todosRouter);
 
 // Export default
 export default apiRouter;

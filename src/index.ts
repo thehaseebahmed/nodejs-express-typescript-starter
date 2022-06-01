@@ -10,5 +10,5 @@ const port = process.env.PORT || 3000;
 // Start server
 server.listen(port, () => {
   logger.info(`Express server started on port: ${port}` );
-  logger.info(`You can test the ping endpoint at http://localhost:${port}/api/ping` );
+  logger.info(`You can test the ping endpoint at http://localhost:${port}/api/health-check` );
 });
